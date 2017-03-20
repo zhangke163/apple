@@ -1,0 +1,41 @@
+.imgbox a:nth-child(1) {
+  background: #0A0A0A url(../img/iphone_alt_small.jpg) center center no-repeat;
+  background-size: contain;
+}
+.imgbox a:nth-child(2) {
+  background: #fff url(../img/macbookpro_portrait_small.jpg) center center no-repeat;
+  background-size: contain;
+}
+.imgbox a:nth-child(3) {
+  background: #F3F3F3 url(../img/watch_alt_medium.jpg) center center no-repeat;
+  background-size: contain;
+}
+@media screen and (min-width: 765px) and (max-width: 1024px) {
+  .imgbox a:nth-child(1) {
+    background: #0A0A0A url(../img/iphone_alt_medium.jpg) center center no-repeat;
+    background-size: contain;
+  }
+  .imgbox a:nth-child(2) {
+    background: #fff url(../img/macbookpro_medium.jpg) center center no-repeat;
+    background-size: contain;
+  }
+  .imgbox a:nth-child(3) {
+    background: #F3F3F3 url(../img/watch_alt_medium.jpg) center center no-repeat;
+    background-size: contain;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .imgbox a:nth-child(1) {
+    left: 0;
+    background: #0A0A0A url(../img/iphone_alt_large.jpg) center center no-repeat;
+    background-size: contain;
+  }
+  .imgbox a:nth-child(2) {
+    background: #fff url(../img/macbookpro_large.jpg) center center no-repeat;
+    background-size: contain;
+  }
+  .imgbox a:nth-child(3) {
+    background: #F3F3F3 url(../img/watch_alt_large.jpg) center center no-repeat;
+    background-size: contain;
+  }
+}
