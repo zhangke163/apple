@@ -4,21 +4,12 @@
 $(function(){
     var now=0;
     var next=0;
-    var times=3000;
+    var times=4000;
     var t1=setInterval(move,times);
     var t2=setInterval(process,50);
     var nowtime=0;
     var flag=true;
     var flag1=true;
-    ////消除浏览器的默认行为
-    //window.onblur=function(){
-    //    clearInterval(t1);
-    //    clearInterval(t2);
-    //}
-    //window.onfocus=function(){
-    //    t1=setInterval(move,times);
-    //    t2=setInterval(process,50);
-    //}
     //轮播
     function move(type){
         var type=type||"l";
@@ -135,4 +126,14 @@ $(function(){
             move("l");
         }
     })
+
+//消除浏览器的默认行为
+//    window.onblur=function(){
+//        clearInterval(t1);
+//        clearInterval(t2);
+//    }
+//    window.onfocus=function(){
+//        t1=setInterval(move,times);
+//        t2=setInterval(process,50);
+//    }
 })

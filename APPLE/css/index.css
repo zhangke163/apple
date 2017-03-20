@@ -271,16 +271,16 @@ nav {
   margin-top: 20px;
   float: left;
 }
-.largebox ul.big li h3 {
+.largebox ul.big > li h3 {
   font-size: 10px;
   color: #333;
 }
-.largebox ul.big li a {
+.largebox ul.big > li a {
   font-size: 10px;
   cursor: pointer;
   color: #555;
 }
-.largebox ul.big li a:hover {
+.largebox ul.big > li a:hover {
   text-decoration: underline;
 }
 .smallbox .top {
@@ -295,28 +295,56 @@ nav {
   width: 95%;
   margin: 0 auto;
 }
-.smallbox ul.small li {
-  height: 38px;
+.smallbox ul.small > li {
+  width: 100%;
+  height: auto;
   line-height: 38px;
   font-size: 10px;
+  float: left;
   border-bottom: 1px solid #D6D6D6;
 }
-.smallbox ul.small li:nth-child(1) {
-  margin-top: 20px;
+.smallbox ul.small > li:nth-child(1) {
+  margin-top: 15px;
 }
-.smallbox ul.small li h3 {
+.smallbox ul.small > li h3 {
   float: left;
   color: #222;
   font-size: 10px;
   font-weight: normal;
   cursor: pointer;
 }
-.smallbox ul.small li h4 {
+.smallbox ul.small > li h4 {
   float: right;
   color: #333;
   font-size: 14px;
   font-weight: normal;
   cursor: pointer;
+  transition: all 1s linear;
+}
+.smallbox ul.small > li h4:hover {
+  transform: rotate(45deg);
+}
+.smallbox ul.small > li ul.content {
+  width: 100%;
+  height: auto;
+  float: none;
+  padding-top: 10px;
+  display: none;
+}
+.smallbox ul.small > li ul.content li {
+  font-size: 10px;
+  float: none;
+  line-height: 30px;
+  padding-left: 20px;
+}
+.smallbox ul.small > li ul.content li:nth-child(1) {
+  margin-top: 30px;
+}
+.smallbox ul.small > li ul.content li a {
+  display: block;
+  text-align: left;
+  float: none;
+  color: #222;
 }
 /*版权*/
 .row2 div.copytop {
