@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图形验证码</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .box{
+        width: 500px;
+        height:156px;
+        position: relative;
+    }
+canvas{
+    position: absolute;
+    /*background:#ccc;*/
+    left:0;
+    top:0;
+}
+</style>
+<script>
+    /*********绘制图形验证码*********
+     * 先创建画板，放置两张图片
+     * 先绘制出随机更换的小图片，将其保存起来。
+     * 然后重新渲染大图。
+     * 重新创建一个小画板，将保存起来的图片渲染到小画板上
+     * 基本布局完成再用js实现滑动效果
+     *
+     *
+     *
+     * ********************/
+    window.onload=function(){
+        var canvas=document.querySelector("canvas");
+        var context=canvas.getContext('2d');
+        var originimg=document.querySelector("img:nth-child(1)");
+        var newimg=document.querySelector("img:nth-child(2)");
+        var box=document.querySelector(".box");
+
+        var widths=canvas.width;
+        var imgwidth=100;
+        var imgheight=156;
+        var widthx=(widths-2*imgwidth)*Math.random()+imgwidth;
+        //创建左边小的
+        context.drawImage(newimg,widthx,0);
+        context.globalAlpha="0.9";
+        context.globalCompositeOperation="source-atop";
+        context.drawImage(originimg,0,0,1125,352,0,0,500,156);
+        var imgs=context.getImageData(widthx,0,imgwidth,imgheight);  //保存小图片
+        //重新渲染大图片
+        context.drawImage(newimg,widthx,0);
+        context.globalAlpha="0.9";
+        context.globalCompositeOperation="destination-atop";
+        context.drawImage(originimg,0,0,1125,352,0,0,500,156);
+        //再创建一个画布
+        var canvas1=document.createElement("canvas");
+        canvas1.width="100";
+        canvas1.height="156";
+        box.appendChild(canvas1);
+        var context1=canvas1.getContext('2d');
+        //重新渲染小图片
+        context1.putImageData(imgs,0,0);
+        //创建一个遮罩，用到事件委派
+        var mask=document.createElement("div");
+        mask.style.cssText="width:500px;height:156px;position:absolute;left:0;top:0;";
+        document.body.appendChild(mask);
+        mask.onmousedown=function(e){
+            var ox= e.offsetX;
+            var oy= e.offsetY;
+            mask.onmousemove=function(e){
+                var cx= e.offsetX;
+                var cy= e.offsetY;
+                var x=cx-ox;
+                if(x>widths-imgwidth){
+                    x=widths-imgwidth;
+                }
+                if(x<0){
+                    x=0;
+                }
+                canvas1.style.left=x+"px";
+            }
+            mask.onmouseup=function(){
+                mask.onmousemove=null;
+                mask.onmouseup=null;
+            }
+        }
+    }
+</script>
+<body>
+<div class="box">
+    <img src="img/c.jpg" alt="" hidden>
+    <img src="img/1.png" alt="" hidden>
+    <canvas width="500" height="156">
+
+    </canvas>
+</div>
+</body>
+</html>

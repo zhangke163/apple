@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圆周运动</title>
+    <script>
+        /*
+         * html
+         * 某个元素的某个属性，连续不断的做运动，在我们的视觉当中，形成的残留影响，就叫动画
+         * 24帧  1000毫秒  移动24下
+         *
+         * */
+    </script>
+    <style>
+        .demo{
+            width: 50px;
+            height: 50px;
+            border:1px solid black;
+        }
+    </style>
+    <link rel="stylesheet" href="css/less.css">
+</head>
+<body>
+<div class="demo"></div>
+</body>
+<script>
+    var x=50,y=0,radius=50,angle=Math.PI/180;
+    setInterval(function () {
+        var newx=x*Math.cos(angle)-y*Math.sin(angle);
+        var newy=x*Math.sin(angle)+y*Math.cos(angle);
+        x=newx;
+        y=newy;
+        var div=document.createElement("div");
+        div.style.cssText="width:2px;height:2px;background:pink;position:absolute;top:0;left:0;transform:translate("+(x+100)+"px,"+(y+100)+"px)";
+        var box=document.querySelector(".box");
+        div.appendChild(box);
+        document.body.appendChild(div);
+    },50)
+</script>
+</html>

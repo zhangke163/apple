@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圆周运动</title>
+    <style>
+        .box{
+            width: 500px;height: 500px;position: fixed;
+            left: 0;right:0;top:0;bottom:0;margin:auto;
+        }
+        .ball{
+            width: 100px;
+            height:100px;background: green;
+        }
+      @keyframes zhuan {
+          0%{
+              transform: rotate(0deg);
+          }
+          100%{
+              transform: rotate(360deg);
+          }
+      }
+        .zhuan{
+            animation: zhuan 3s linear infinite;
+        }
+
+        @keyframes fanzhuan {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(-360deg);
+            }
+        }
+        .fanzhuan{
+            animation: fanzhuan 3s linear infinite;
+        }
+
+
+        .bigbox{
+            width: 100px;height: 100px;
+            border: 1px solid yellow;padding: 0;margin: 0;
+        }
+    </style>
+</head>
+<body>
+<!--自创方法-->
+    <div class="box zhuan">
+        <div class="ball fanzhuan">
+        </div>
+    </div>
+
+<div class="bigbox"></div>
+</body>
+<script>
+//    js方法
+window.onload=function(){
+    var x=50;var y=0; var angle=Math.PI/180;
+    setInterval(function(){
+        var newx=x*Math.cos(angle)-y*Math.sin(angle);
+        var newy=x*Math.sin(angle)+y*Math.cos(angle);
+        var box=document.querySelector(".bigbox");
+        x=newx;
+        y=newy;
+        var div=document.createElement("div");
+        div.style.cssText="width:1px;height:1px;background:red;position:absolute;left:0;top:0";
+        div.style.transform="translate("+(x+100)+"px,"+(y+100)+"px)";
+        box.style.cssText="transform:translate("+(x+100)+"px,"+(y+100)+"px)";
+        document.body.appendChild(div);
+    },50)
+}
+
+</script>
+</html>

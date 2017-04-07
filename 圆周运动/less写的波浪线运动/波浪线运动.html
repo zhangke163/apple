@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>波浪线运动</title>
+    <link rel="stylesheet" href="css/less.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var x=0,y=0;
+            var cw=document.documentElement.clientWidth;
+            var body=document.querySelector("body");
+            var box=document.querySelector(".box");
+            var t=setInterval(function () {
+                x++;
+                if(x>720){
+                    clearInterval(t);
+                }else {
+                    hudu=x*Math.PI/180;
+                    y=Math.sin(hudu);
+                    var div=document.createElement("div");
+                    div.style.cssText="transform:translate("+(x)+"px,"+(y*100)+"px);width:2px;height:2px;background:red;position:absolute;top:200px;left:0";
+                    body.appendChild(div);
+                    box.style.cssText="transform:translate("+(x)+"px,"+(y*100+100)+"px)";
+                }
+
+            },50)
+        }
+    </script>
+</head>
+<body>
+<div class="box demo">
+
+</div>
+</body>
+</html>
